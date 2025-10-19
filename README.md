@@ -7,11 +7,9 @@ To address the lack of method's robustness evaluation, we construct an MLFIS dat
 The MLFIS dataset is constructed based on the CARLA simulator [here](https://carla.org/)  [GITHUB](https://github.com/carla-simulator/carla), which are captured by the 64-line Velodyne LiDAR and RGB camera. The CARLA simulator (Car Learning to Act) is an open-source autonomous driving simulation platform jointly developed by Intel Labs and the Toyota Research Institute. It is based on Unreal Engine and provides high-fidelity urban environments, vehicle sensor models (such as cameras, lidar, GPS, IMU, etc.), and flexibly configurable dynamic traffic scenarios to support the development, training, and validation of 3D object detection and autonomous driving methods.
 
 
-
-
 ## Dataset Details
 
-Data Split：
+### Data Split：
 
 The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. 
 
@@ -22,10 +20,54 @@ The MLFIS dataset consists of 6,921 training samples (4,500 samples for training
 | Test set       | 1,251 | 435 | 556  | 2,242 |
 | **Total**      | 3,985 | 1,815 | 3,363 | 9,163
 
-Data Scenarios：
+### Data Scenarios：
 
-The MLFIS dataset contains the diverse unstructured scenarios (including grassland, forest, and mountain) and different fog interference (including mild, moderate, and severe fog). For the unstructured scenarios, the grassland scenario suffers random occlusions from grass, causing a sharp drop in foreground-background distinction. The forest scenario causes mottled light patterns and deep fissures, and the textures on tree trunks can lead to semantic confusion. In mountain scenario, the rock edges and the vehicle's metal reflections interfere with each other, increasing the uncertainty in edge detection. For the different fog interference, Fig.1(a) shows the mild fog scenario that contains lots of distant small and occluded objects, which makes it  difficult to visually distinguish objects from the images, thereby increasing detection difficulty for the occluded and small objects. Fig.2(b) illustrates the moderate fog scenario that includes lots of smoke interference and tree coverage, which effectively verifies the method's  detection performance for extreme weather and unstructured terrain. Fig.3(c) depicts the severe fog scenario, which presents a huge detection challenge for method robustness evaluation. 
+The MLFIS dataset contains the diverse unstructured scenarios (including grassland, forest, and mountain) and different fog interference (including mild, moderate, and severe fog).
 
-<img src="Fig.png" width="50%" alt="Visualization of samples from the MLFIS dataset. (a) Mild fog scenario. (b) Moderate fog scenario. (c) Severe fog scenario."/>
+For the unstructured scenarios, the grassland scenario suffers random occlusions from grass, causing a sharp drop in foreground-background distinction. The forest scenario causes mottled light patterns and deep fissures, and the textures on tree trunks can lead to semantic confusion. In mountain scenario, the rock edges and the vehicle's metal reflections interfere with each other, increasing the uncertainty in edge detection. 
+
+For the different fog interference, Fig.1(a) shows the mild fog scenario that contains lots of distant small and occluded objects, which makes it  difficult to visually distinguish objects from the images, thereby increasing detection difficulty for the occluded and small objects. Fig.2(b) illustrates the moderate fog scenario that includes lots of smoke interference and tree coverage, which effectively verifies the method's  detection performance for extreme weather and unstructured terrain. Fig.3(c) depicts the severe fog scenario, which presents a huge detection challenge for method robustness evaluation. 
+
+<img src="Fig.png" width="80%" alt="Visualization of samples from the MLFIS dataset. (a) Mild fog scenario. (b) Moderate fog scenario. (c) Severe fog scenario."/>
 Fig.1 Visualization of samples from the MLFIS dataset. (a) Mild fog scenario. (b) Moderate fog scenario. (c) Severe fog scenario.
 
+
+### Data Advantage：
+
+Compared with the existing datasets, the MLFIS dataset can be applied to research the robustness 3D object detection under Mild, Mod, and Sev fog scenarios containing grassland, forest, and mountain terrain. Compared with the existing evaluation protocol, the robustness evaluation protocol proposes the multi-level fog evaluation that  calculates the APs on diverse fog scenarios, object categories, and recall positions, which fully analyzes method's robustness.
+
+##  Robustness evaluation protocol
+
+<pre>
+```plaintext
+Algorithm: The Proposed Robustness Evaluation Protocol
+------------------------------------------------------
+Input:  
+  DMild, GTMild   // mild-fog data & ground truth  
+  DMod, GTMod     // moderate-fog  
+  DSev, GTSev     // severe-fog  
+  Ŷ               // predicted 3D boxes  
+
+for I ∈ {Mild, Mod, Sev} do
+    if Class == Car then
+        if Task == 3D AP then
+            3D AP(R11) ← Compute(Ŷ, GT_I, IoU3D=0.7, 11-point)
+            3D AP(R40) ← Compute(Ŷ, GT_I, IoU3D=0.7, 40-point)
+        else if Task == BEV AP then
+            BEV AP(R40) ← Compute(Ŷ, GT_I, IoUbev=0.7, 40-point)
+    end if
+
+    if Class == Pedestrian then
+        if Task == 3D AP then
+            3D AP(R11) ← Compute(Ŷ, GT_I, IoU3D=0.5, 11-point)
+            3D AP(R40) ← Compute(Ŷ, GT_I, IoU3D=0.5, 40-point)
+        else if Task == BEV AP then
+            BEV AP(R40) ← Compute(Ŷ, GT_I, IoUbev=0.5, 40-point)
+    end if
+end for
+
+Output:
+  Car     – 3D AP(R11), 3D AP(R40), BEV AP(R40)
+  Pedestrian – 3D AP(R11), 3D AP(R40), BEV AP(R40)
+```
+</pre>
