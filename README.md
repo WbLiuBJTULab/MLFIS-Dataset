@@ -9,7 +9,7 @@ The MLFIS dataset is constructed based on the CARLA simulator [here](https://car
 
 ## Dataset Details
 
-### Data Scenarios：
+### Data Scenarios
 
 The MLFIS dataset contains the diverse unstructured scenarios (including grassland, forest, and mountain) and different fog interference (including mild, moderate, and severe fog).
 
@@ -25,7 +25,7 @@ Fig.3(c) depicts the severe fog scenario, which presents a huge detection challe
 Fig.1 Visualization of samples from the MLFIS dataset. (a) Mild fog scenario. (b) Moderate fog scenario. (c) Severe fog scenario.
 
 
-### Data Split：
+### Data Split
 
 The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. 
 
@@ -42,9 +42,10 @@ The MLFIS dataset consists of 6,921 training samples (4,500 samples for training
 
 Compared with the existing datasets, the MLFIS dataset can be applied to research the robustness 3D object detection under Mild, Mod, and Sev fog scenarios containing grassland, forest, and mountain terrain. Compared with the existing evaluation protocol, the robustness evaluation protocol proposes the multi-level fog evaluation that  calculates the APs on diverse fog scenarios, object categories, and recall positions, which fully analyzes method's robustness.
 
+
 ##  Robustness evaluation protocol
 
-For the robustness evaluation protocol, it analyzes various APs for mild, moderate, and severe fog scenarios (abbreviated as Mild, Mod, and Sev), which comprehensively demonstrates the method's robustness performance faced with different interference. Algorithm 2 presents the proposed robustness evaluation protocol based on the MLFIS dataset. In Algorithm 2, the car category and pedestrian category are evaluated at the IoU threshold of 0.7 and 0.5, respectively, and reported in terms of 3D AP(R40), 3D AP(R11), and BEV AP(R40) across Mild, Mod, and Sev fog scenarios. For example, when the car category is evaluated on mild fog scenarios $\mathcal{D}_{Mild}$, the predicted 3D bounding box $\hat{Y}$ is first considered positive if its 3D IoU with the ground-truth box $GT_{Mild}$ exceeds 0.7 ($\text{IoU}_{3D}^{0.7}$). Later, the PR curve can be calculated by Compute$(\cdot)$ that uses both 11-point interpolation and 40-point interpolation, which yield the Car 3D AP(R11) and Car 3D AP(R40), respectively. Meanwhile, the Car BEV AP(R40) can be obtained by replacing the $\text{IoU}_{3D}^{0.7}$ with the BEV IoU ($\text{IoU}_{bev}^{0.7}$) during the above process.
+For the robustness evaluation protocol, it analyzes various APs for mild, moderate, and severe fog scenarios (abbreviated as Mild, Mod, and Sev), which comprehensively demonstrates the method's robustness performance faced with different interference. Algorithm  presents the proposed robustness evaluation protocol based on the MLFIS dataset. In Algorithm 2, the car category and pedestrian category are evaluated at the IoU threshold of 0.7 and 0.5, respectively, and reported in terms of 3D AP(R40), 3D AP(R11), and BEV AP(R40) across Mild, Mod, and Sev fog scenarios. For example, when the car category is evaluated on mild fog scenarios DMild, the predicted 3D bounding box Ŷ  is first considered positive if its 3D IoU with the ground-truth box GTMild exceeds 0.7 (IoU3D=0.7). Later, the PR curve can be calculated by Compute() that uses both 11-point interpolation and 40-point interpolation, which yield the Car 3D AP(R11) and Car 3D AP(R40), respectively. Meanwhile, the Car BEV AP(R40) can be obtained by replacing the IoU3D=0.7 with the BEV IoU (IoUbev=0.7) during the above process.
 
 <pre>
 Algorithm: The Proposed Robustness Evaluation Protocol
@@ -73,7 +74,20 @@ for I ∈ {Mild, Mod, Sev} do
     end if
 end for
 
+
+  
+
 Output:
-  Car     – 3D AP(R11), 3D AP(R40), BEV AP(R40)
+  Car        – 3D AP(R11), 3D AP(R40), BEV AP(R40)
   Pedestrian – 3D AP(R11), 3D AP(R40), BEV AP(R40)
 </pre>
+
+
+
+## Academic Research Use Only
+
+Any commercial exploitation, including but not limited to business testing, product integration or profit-making services, is strictly prohibited. If you use these resources in your work, please cite the accompanying paper and comply with the license terms.
+
+## Credits
+
+We thank Beijing Jiaotong University and China North Artificial Intelligence & Innovation Research Institute for supporting this project. We further thank our 3D object labeling task force for doing such a great job: Jicheng Zhu, Zeheng Zhang, Rongrong Jin, Peiting Li.
