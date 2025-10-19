@@ -1,6 +1,6 @@
 # Welcome to the MLFIS Vision Benchmark Suite! 
 
-To address the lack of method's robustness evaluation, we construct an MLFIS dataset and propose a novel robustness evaluation protocol for diverse extreme interference. The MLFIS dataset is constructed based on the CARLA simulator, which contains  diverse unstructured scenarios (including grassland, forest, and mountain) and different fog interference (including mild, moderate, and severe fog). The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. In addition, the dataset mainly contains the car and pedestrian categories, which are captured by the 64-line Velodyne LiDAR and RGB camera.
+To address the lack of method's robustness evaluation, we construct an MLFIS dataset and propose a novel robustness evaluation protocol for diverse extreme interference.  In addition, the dataset mainly contains the car and pedestrian categories.
 
 ## Raw Data Acquisition
 
@@ -11,12 +11,19 @@ The MLFIS dataset is constructed based on the CARLA simulator [here](https://car
 
 ## Dataset Details
 
-The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. In addition, the dataset mainly contains the car and pedestrian categories, which are captured by the 64-line Velodyne LiDAR and RGB camera.
+Data Split：
 
+The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. 
 
 | Data Split     | Mild  | Mod | Sev  | Total |
 |----------------|-------|-----|------|--------|
 | Training set   | 1,734 | 950 | 1,816 | 4,500 |
 | Validation set | 1,000 | 430 | 991  | 2,421 |
 | Test set       | 1,251 | 435 | 556  | 2,242 |
-| **Total**      | 3,985 | 1,815 | 3,363 | **9,
+| **Total**      | 3,985 | 1,815 | 3,363 | 9,163
+
+Data Scenarios：
+
+The MLFIS dataset contains the diverse unstructured scenarios (including grassland, forest, and mountain) and different fog interference (including mild, moderate, and severe fog). /
+
+For the unstructured scenarios, the grassland scenario suffers random occlusions from grass, causing a sharp drop in foreground-background distinction. The forest scenario causes mottled light patterns and deep fissures, and the textures on tree trunks can lead to semantic confusion. In mountain scenario, the rock edges and the vehicle's metal reflections interfere with each other, increasing the uncertainty in edge detection.
