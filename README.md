@@ -45,9 +45,9 @@ Compared with the existing datasets, the MLFIS dataset can be applied to researc
 
 ## Usage Instructions
 
-Similar to the usage method for the KITTI dataset[here](https://www.cvlibs.net/datasets/kitti/), run following command to creat dataset infos:
+Similar to the usage method for the KITTI dataset [here](https://www.cvlibs.net/datasets/kitti/), run following command to creat dataset infos:
 <pre>
-python3 -m pcdet.datasets.kitti.kitti_dataset_mm create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
+python3 -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 </pre>
 
 Please download the MLFIS dataset, and organize the downloaded files as follows: 
