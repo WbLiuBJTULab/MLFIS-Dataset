@@ -43,6 +43,32 @@ The MLFIS dataset consists of 6,921 training samples (4,500 samples for training
 Compared with the existing datasets, the MLFIS dataset can be applied to research the robustness 3D object detection under Mild, Mod, and Sev fog scenarios containing grassland, forest, and mountain terrain. Compared with the existing evaluation protocol, the robustness evaluation protocol proposes the multi-level fog evaluation that  calculates the APs on diverse fog scenarios, object categories, and recall positions, which fully analyzes method's robustness.
 
 
+## Usage Instructions
+
+
+<pre>
+  
+├── data
+│   ├── mlfis
+│   │   │── ImageSets
+│   │   │── training
+│   │   │   ├──calib & velodyne & label & image
+│   │   │── testing
+│   │   │   ├──calib & velodyne & label & image
+│   │   │── gt_database
+│   │   │── mlfis_dbinfos_train_mm.pkl
+│   │   │── mlfis_infos_test.pkl
+│   │   │── mlfis_infos_train.pkl
+│   │   │── mlfis_infos_valmild.pkl
+│   │   │── mlfis_infos_valmod.pkl
+│   │   │── mlfis_infos_valsev.pkl
+
+</pre>
+
+
+
+
+
 ##  Robustness evaluation protocol
 
 For the robustness evaluation protocol, it analyzes various APs for mild, moderate, and severe fog scenarios (abbreviated as Mild, Mod, and Sev), which comprehensively demonstrates the method's robustness performance faced with different interference.
