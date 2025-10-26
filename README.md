@@ -50,6 +50,10 @@ Similar to the usage method for the KITTI dataset [here](https://www.cvlibs.net/
 python3 -m pcdet.datasets.kitti.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/kitti_dataset.yaml
 </pre>
 
+Download Train：https://pan.baidu.com/s/1lMpM0PNBtszbzq6VKOfZsQ 
+Download Test：https://pan.baidu.com/s/11bV-FEGE03li_lUOTNbztg 
+
+
 Please download the MLFIS dataset, and organize the downloaded files as follows: 
 <pre>
 ├── data
