@@ -27,7 +27,7 @@ Fig.1 Visualization of samples from the MLFIS dataset. (a) Mild fog scenario. (b
 
 ### Data Split
 
-The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. 
+The MLFIS dataset consists of 6,921 training samples (4,500 samples for training and 2,421 samples for validation) and 2,242 test samples, in which 3,985 samples represent mild fog scenarios, 1,815 samples represent moderate fog scenarios, and 3,363 samples represent severe fog scenarios. The specific data split is as follows:
 
 | Data Split     | Mild  | Mod | Sev  | Total |
 |----------------|-------|-----|------|--------|
