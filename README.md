@@ -122,4 +122,6 @@ Any commercial exploitation, including but not limited to business testing, prod
 
 ## Credits
 
-We thank Beijing Jiaotong University and China North Artificial Intelligence & Innovation Research Institute for supporting this project. We further thank our 3D object labeling task force for doing such a great job: Jicheng Zhu, Zeheng Zhang, Rongrong Jin, Peiting Li. (corresponding author：Weibin Liu wbliu@bjtu.edu.cn, Jicheng Zhu 24115060@bjtu.edu.cn)
+We thank Beijing Jiaotong University and China North Artificial Intelligence & Innovation Research Institute for supporting this project. We further thank our 3D object labeling task force for doing such a great job: Jicheng Zhu, Zeheng Zhang, Rongrong Jin, Peiting Li. 
+
+(Corresponding author：Weibin Liu wbliu@bjtu.edu.cn, Jicheng Zhu 24115060@bjtu.edu.cn)
